@@ -1,8 +1,12 @@
 import pandas as pd  
 import numpy as np
 import random
+from clean_data import remover_espacos_colunas
+
 
 from datetime import datetime, timedelta
+
+from clean_data import remover_espacos_colunas
  
 def gerar_dataset_vendas(n_registros=200, seed=42):
     """Gera um dataset sintetico de vendas com dados sujos."""
@@ -64,7 +68,8 @@ def inspecionar_dados(df_bruto):
     print(f"\nValores nulos por coluna:\n{df_bruto.isnull().sum()}")
     print(f"\nPrimeiros registros:\n{df_bruto.head()}")
     return df_bruto
+
 inspecionar_dados(df_bruto)
 
-
-
+def tratar_dados(df_bruto):
+    df_limpo = remover_espacos_colunas(df_bruto)
