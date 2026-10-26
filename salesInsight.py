@@ -54,3 +54,17 @@ df_bruto = gerar_dataset_vendas()
 df_bruto.to_csv("vendas.csv", index=False)
 print(f"Dataset gerado com {len(df_bruto)} registros.")
 print(df_bruto.head())
+
+"""Exibe as informacoes estruturais do DataFrame."""
+def inspecionar_dados(df_bruto):
+    print("\n=== INSPECAO INICIAL DO DATASET ===")
+    print(f"Shape: {df_bruto.shape}")
+    print(f"\nColunas: {list(df_bruto.columns)}")
+    print(f"\nTipos de dados:\n{df_bruto.dtypes}")
+    print(f"\nValores nulos por coluna:\n{df_bruto.isnull().sum()}")
+    print(f"\nPrimeiros registros:\n{df_bruto.head()}")
+    return df_bruto
+inspecionar_dados(df_bruto)
+
+
+
