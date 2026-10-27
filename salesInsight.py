@@ -1,10 +1,8 @@
 import pandas as pd  
 import numpy as np
 import random
-from clean_data import remover_espacos_colunas
-from clean_data import tratar_datas
-from clean_data import ajustar_tipos
-
+from clean_data import(remover_espacos_colunas,
+ tratar_datas, ajustar_tipos, gerar_relatorio_tratamento)
 
 from datetime import datetime, timedelta
 
@@ -81,4 +79,14 @@ def tratar_dados(df_bruto):
     return df_limpo
 
 df_limpo = tratar_dados(df_bruto)
-    
+df_limpo = ajustar_tipos(df_limpo)
+registros_iniciais, registros_restantes, registros_removidos = (
+    gerar_relatorio_tratamento(df_bruto, df_limpo)
+)
+
+print("\n=== RELATÓRIO DE TRATAMENTO DE DADOS ===")
+print(f"Registros iniciais: {registros_iniciais}")
+print(f"Registros restantes: {registros_restantes}")
+print(f"Registros removidos: {registros_removidos}")
+
+   
