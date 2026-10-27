@@ -19,3 +19,9 @@ def tratar_dados(df_bruto):
     )
     df_limpo = df_limpo.dropna(subset=["data_venda"])
     return df_limpo
+
+def ajustar_tipos(df_bruto):
+    df_limpo = df_bruto.copy()
+    df_limpo["quantidade"] = df_limpo["quantidade"].astype(int)
+    df_limpo["preco_unitario"] = df_limpo["preco_unitario"].astype(float)
+    return df_limpo
