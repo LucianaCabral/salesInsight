@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import random
 from clean_data import remover_espacos_colunas
+from clean_data import tratar_datas
+from clean_data import ajustar_tipos
 
 
 from datetime import datetime, timedelta
@@ -73,3 +75,10 @@ inspecionar_dados(df_bruto)
 
 def tratar_dados(df_bruto):
     df_limpo = remover_espacos_colunas(df_bruto)
+    df_limpo = tratar_datas(df_limpo)
+    df_limpo = ajustar_tipos(df_limpo)
+    
+    return df_limpo
+
+df_limpo = tratar_dados(df_bruto)
+    
