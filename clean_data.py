@@ -9,3 +9,13 @@ def remover_espacos_colunas(df_bruto):
     for coluna in colunas_texto:
             df_limpo[coluna] = df_limpo[coluna].str.strip()
     return df_limpo
+
+def tratar_dados(df_bruto):
+    df_limpo = df_bruto.copy()
+
+    df_limpo["data_venda"] = pd.to_datetime(
+        df_limpo["data_venda"],
+        errors="coerce"
+    )
+    df_limpo = df_limpo.dropna(subset=["data_venda"])
+    return df_limpo
