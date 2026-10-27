@@ -29,3 +29,10 @@ def ajustar_tipos(df_bruto):
     df_limpo["preco_unitario"] = df_limpo["preco_unitario"].astype(float)
 
     return df_limpo
+
+def gerar_relatorio_tratamento(df_bruto, df_limpo):
+    registros_iniciais = len(df_bruto)
+    registros_restantes = len(df_limpo)
+    registros_removidos = registros_iniciais - registros_restantes
+    
+    return registros_iniciais, registros_restantes, registros_removidos
