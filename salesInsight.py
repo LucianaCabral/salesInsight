@@ -1,3 +1,4 @@
+from clean_data import remover_espacos_colunas
 import pandas as pd  
 import numpy as np
 import random
@@ -66,5 +67,5 @@ def inspecionar_dados(df_bruto):
     return df_bruto
 inspecionar_dados(df_bruto)
 
-
-
+def tratar_dados(df_bruto):
+    df_limpo = remover_espacos_colunas(df_bruto)
