@@ -38,4 +38,13 @@ def calcular_metricas_por_regiao(df):
         .reset_index()
     )
     return metricas
+
+def calcular_metricas(df):
+    metricas = {
+        "por_mes": calcular_metricas_por_mes(df),
+        "top_produtos": calcular_top_produtos(df),
+        "por_categoria": calcular_metricas_por_categoria(df),
+        "por_regiao": calcular_metricas_por_regiao(df)
+    }
+    return metricas
     
