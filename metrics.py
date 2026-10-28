@@ -21,3 +21,11 @@ def calcular_top_produtos(df):
         .reset_index()
     )
     return metricas
+
+def calcular_metricas_por_categoria(df):
+    metricas = (
+        df.groupby("categoria")
+        .agg(receita_total=("receita_total", "sum"))
+        .reset_index()
+    )
+    return metricas
