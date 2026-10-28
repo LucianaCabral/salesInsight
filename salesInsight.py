@@ -1,5 +1,4 @@
 from clean_data import remover_espacos_colunas, tratar_datas, ajustar_tipos, gerar_relatorio_tratamento, tratar_dados
-from customer_segmentation import segmentar_clientes
 from transform_data import criar_colunas_derivadas
 from metrics import calcular_metricas, exibir_metricas
 import pandas as pd  
@@ -97,10 +96,3 @@ print(f"\nColunas disponíveis: {list(df_vendas.columns)}")
 
 metricas = calcular_metricas(df_vendas)
 exibir_metricas(metricas)
-
-clientes_segmentados = segmentar_clientes(df_vendas)
-print("\n=== TOP 10 CLIENTES POR GASTO ===")
-print(clientes_segmentados.head(10).to_string(index=False))
-
-print("\n=== DISTRIBUIÇÃO DE CLIENTES POR SEGMENTO ===")
-print(clientes_segmentados["segmento"].value_counts())
