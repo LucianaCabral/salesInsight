@@ -1,5 +1,6 @@
 from clean_data import remover_espacos_colunas, tratar_datas, ajustar_tipos, gerar_relatorio_tratamento, tratar_dados
 from transform_data import criar_colunas_derivadas
+from metrics import calcular_metricas, exibir_metricas
 import pandas as pd  
 import numpy as np
 import random
@@ -92,3 +93,6 @@ print(df_vendas[
     ]
 ].head())
 print(f"\nColunas disponíveis: {list(df_vendas.columns)}")
+
+metricas = calcular_metricas(df_vendas)
+exibir_metricas(metricas)

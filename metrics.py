@@ -47,4 +47,17 @@ def calcular_metricas(df):
         "por_regiao": calcular_metricas_por_regiao(df)
     }
     return metricas
+
+def exibir_metricas(metricas):
+    print("\n=== POR MÊS ===")
+    print(metricas["por_mes"])
+
+    print("\n=== TOP PRODUTOS ===")
+    print(metricas["top_produtos"])
+
+    print("\n=== POR CATEGORIA ===")
+    print(metricas["por_categoria"])
+
+    print("\n=== POR REGIÃO ===")
+    print(metricas["por_regiao"])
     
