@@ -1,4 +1,5 @@
 from clean_data import remover_espacos_colunas, tratar_datas, ajustar_tipos, gerar_relatorio_tratamento, tratar_dados
+from transform_data import criar_colunas_derivadas
 import pandas as pd  
 import numpy as np
 import random
@@ -74,3 +75,20 @@ print("\n=== DATASET LIMPO ===")
 print(df_limpo.head())
 print(f"\nDimensões finais: {df_limpo.shape}")
 print(f"\nTipos de dados:\n{df_limpo.dtypes}")
+
+"""Exibe as colunas derivadas criadas para analise das vendas."""
+df_vendas = criar_colunas_derivadas(df_limpo)
+
+print("\n=== DATASET COM COLUNAS DERIVADAS ===")
+print(df_vendas.head())
+print(df_vendas[
+    [
+        "receita_total",
+        "mes",
+        "mes_nome",
+        "trimestre",
+        "ano",
+        "faixa_receita_item"
+    ]
+].head())
+print(f"\nColunas disponíveis: {list(df_vendas.columns)}")
