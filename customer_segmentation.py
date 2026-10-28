@@ -24,3 +24,11 @@ def segmentar_clientes(df):
     ).reset_index(drop=True)
 
     return clientes
+
+def exibir_segmentacao(clientes_segmentados):
+    """Exibe os maiores clientes e a distribuição por segmento."""
+    print("\n=== TOP 10 CLIENTES POR GASTO ===")
+    print(clientes_segmentados.head(10).to_string(index=False))
+
+    print("\n=== DISTRIBUIÇÃO DE CLIENTES POR SEGMENTO ===")
+    print(clientes_segmentados["segmento"].value_counts())
