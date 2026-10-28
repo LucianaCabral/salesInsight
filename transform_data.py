@@ -41,3 +41,9 @@ def classificar_receita_item(df):
 
     return df
 
+def criar_colunas_derivadas(df_limpo):
+    df = calcular_receita_total(df_limpo)
+    df = extrair_dados_temporais(df)
+    df = classificar_receita_item(df)
+
+    return df
