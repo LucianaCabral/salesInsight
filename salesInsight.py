@@ -1,3 +1,4 @@
+from clean_data import remover_espacos_colunas, tratar_datas, ajustar_tipos, gerar_relatorio_tratamento, tratar_dados
 import pandas as pd  
 import numpy as np
 import random
@@ -67,4 +68,9 @@ def inspecionar_dados(df_bruto):
 inspecionar_dados(df_bruto)
 
 
+df_limpo, relatorio = tratar_dados(df_bruto)
 
+print("\n=== DATASET LIMPO ===")
+print(df_limpo.head())
+print(f"\nDimensões finais: {df_limpo.shape}")
+print(f"\nTipos de dados:\n{df_limpo.dtypes}")
