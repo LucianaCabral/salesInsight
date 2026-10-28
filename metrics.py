@@ -11,3 +11,13 @@ def calcular_metricas_por_mes(df):
         .reset_index()
     )
     return metricas
+
+def calcular_top_produtos(df):
+    metricas = (
+        df.groupby("produto")
+        .agg(receita_total=("receita_total", "sum"))
+        .sort_values("receita_total", ascending=False)
+        .head(5)
+        .reset_index()
+    )
+    return metricas
