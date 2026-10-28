@@ -10,7 +10,7 @@ def remover_espacos_colunas(df_bruto):
             df_limpo[coluna] = df_limpo[coluna].str.strip()
     return df_limpo
 
-def tratar_dados(df_bruto):
+def tratar_datas(df_bruto):
     df_limpo = df_bruto.copy()
 
     df_limpo["data_venda"] = pd.to_datetime(
