@@ -29,3 +29,12 @@ def calcular_metricas_por_categoria(df):
         .reset_index()
     )
     return metricas
+
+def calcular_metricas_por_regiao(df):
+    metricas = (
+        df.groupby("regiao")
+        .agg(receita_total=("receita_total", "sum"))
+        .reset_index()
+    )
+    return metricas
+    
