@@ -33,7 +33,8 @@ def calcular_metricas_por_categoria(df):
 def calcular_metricas_por_regiao(df):
     metricas = (
         df.groupby("regiao")
-        .agg(receita_total=("receita_total", "sum"))
+        .agg(receita_total=("receita_total", "sum"),
+             ticket_medio=("receita_total", "mean"))
         .reset_index()
     )
     return metricas
