@@ -23,3 +23,21 @@ def extrair_dados_temporais(df):
 
     return df
 
+def classificar_receita_item(df):
+    df = df.copy()
+
+    condicoes = [
+        df["receita_total"] < 500,
+        (df["receita_total"] >= 500) & (df["receita_total"] < 5000),
+        df["receita_total"] >= 5000
+    ]
+
+    faixas = ["Baixo Valor", "Medio Valor", "Alto Valor"]
+
+    df["faixa_receita_item"] = "Nao Classificado"
+
+    for condicao, faixa in zip(condicoes, faixas):
+        df.loc[condicao, "faixa_receita_item"] = faixa
+
+    return df
+
