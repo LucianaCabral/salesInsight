@@ -80,7 +80,7 @@ def inspecionar_dados(df_bruto):
     print(f"\nPrimeiros registros:\n{df_bruto.head()}")
     return df_bruto
 
-def executar_analise():
+def main():
     """
     Coordena o fluxo completo de análise das vendas.
 
@@ -154,8 +154,9 @@ def executar_analise():
     clientes_segmentados,
     estatisticas
     )
+    print("\n[CONCLUÍDO] Fluxo finalizado com sucesso.")
     
-    return df_vendas, metricas, clientes_segmentados
+    return df_vendas, metricas, clientes_segmentados  
 
 if __name__ == "__main__":
-    executar_analise()
+    main()
