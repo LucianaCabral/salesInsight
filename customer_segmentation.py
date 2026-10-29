@@ -1,8 +1,19 @@
 def segmentar_clientes(df):
-    """Agrupa as vendas por cliente, calcula o total gasto
+    """
+    Agrupa as vendas por cliente, calcula o total gasto
     e classifica os clientes em Bronze, Prata ou Ouro.
 
-    Retorna um DataFrame com:cliente, total_gasto e segmento.
+    Critérios de classificação:
+        Bronze: total gasto inferior a 5.000.
+        Prata: total gasto entre 5.000 e 15.000.
+        Ouro: total gasto superior a 15.000.
+
+    Args:
+        df: DataFrame contendo as colunas cliente e receita_total.
+
+    Returns:
+        DataFrame com as colunas cliente, total_gasto e segmento,
+        ordenado pelo maior total gasto.
     """
     
     clientes = (
