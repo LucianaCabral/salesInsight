@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 import random
 from visualizations import gerar_graficos
+from export_results import exportar_resultados
 
 from datetime import datetime, timedelta
  
@@ -136,9 +137,24 @@ def executar_analise():
     clientes_segmentados = segmentar_clientes(df_vendas)
     exibir_segmentacao(clientes_segmentados)
 
-    # 7. Geração dos gráficos
+    # 7. Cálculo das estatísticas gerais
+    estatisticas = {
+    "receita_total": df_vendas["receita_total"].sum(),
+    "quantidade_vendida": df_vendas["quantidade"].sum(),
+    "total_vendas": len(df_vendas),
+    "ticket_medio": df_vendas["receita_total"].mean()
+    }
+
+    # 8. Geração dos gráficos
     gerar_graficos(df_vendas)
 
+    # 9. Exportação dos resultados
+    exportar_resultados(
+    metricas,
+    clientes_segmentados,
+    estatisticas
+    )
+    
     return df_vendas, metricas, clientes_segmentados
 
 if __name__ == "__main__":

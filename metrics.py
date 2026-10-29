@@ -21,7 +21,7 @@ def calcular_metricas_por_mes(df):
     return metricas
 
 def calcular_top_produtos(df):
-   def calcular_top_produtos(df):
+  
     """
     Identifica os cinco produtos com maior receita total.
     Args:
