@@ -5,6 +5,7 @@ from metrics import calcular_metricas, exibir_metricas
 import pandas as pd  
 import numpy as np
 import random
+from visualizations import gerar_graficos
 
 from datetime import datetime, timedelta
  
@@ -101,4 +102,4 @@ exibir_metricas(metricas)
 clientes_segmentados = segmentar_clientes(df_vendas)
 exibir_segmentacao(clientes_segmentados)
 
-
+gerar_graficos(df_vendas)
