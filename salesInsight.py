@@ -1,4 +1,5 @@
 from clean_data import remover_espacos_colunas, tratar_datas, ajustar_tipos, gerar_relatorio_tratamento, tratar_dados
+from customer_segmentation import segmentar_clientes,exibir_segmentacao
 from transform_data import criar_colunas_derivadas
 from metrics import calcular_metricas, exibir_metricas
 import pandas as pd  
@@ -96,3 +97,8 @@ print(f"\nColunas disponíveis: {list(df_vendas.columns)}")
 
 metricas = calcular_metricas(df_vendas)
 exibir_metricas(metricas)
+
+clientes_segmentados = segmentar_clientes(df_vendas)
+exibir_segmentacao(clientes_segmentados)
+
+
