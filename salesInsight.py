@@ -60,8 +60,17 @@ df_bruto.to_csv("vendas.csv", index=False)
 print(f"Dataset gerado com {len(df_bruto)} registros.")
 print(df_bruto.head())
 
-"""Exibe as informacoes estruturais do DataFrame."""
+
 def inspecionar_dados(df_bruto):
+    """"
+    Exibe informações estruturais do DataFrame.
+
+    Args:
+        df_bruto: DataFrame que será inspecionado.
+
+    Returns:
+        O próprio DataFrame recebido.
+    """
     print("\n=== INSPECAO INICIAL DO DATASET ===")
     print(f"Shape: {df_bruto.shape}")
     print(f"\nColunas: {list(df_bruto.columns)}")
@@ -69,37 +78,68 @@ def inspecionar_dados(df_bruto):
     print(f"\nValores nulos por coluna:\n{df_bruto.isnull().sum()}")
     print(f"\nPrimeiros registros:\n{df_bruto.head()}")
     return df_bruto
-inspecionar_dados(df_bruto)
 
+def executar_analise():
+    """
+    Coordena o fluxo completo de análise das vendas.
 
-df_limpo, relatorio = tratar_dados(df_bruto)
+    Gera os dados, realiza a inspeção, limpeza, transformação,
+    cálculo de métricas, segmentação de clientes e visualização.
 
-print("\n=== DATASET LIMPO ===")
-print(df_limpo.head())
-print(f"\nDimensões finais: {df_limpo.shape}")
-print(f"\nTipos de dados:\n{df_limpo.dtypes}")
+    Returns:
+        Tupla contendo o DataFrame transformado, as métricas
+        calculadas e o DataFrame de clientes segmentados.
+    """
+    # 1. Geração do dataset bruto
+    df_bruto = gerar_dataset_vendas()
+    df_bruto.to_csv("vendas.csv", index=False)
 
-"""Exibe as colunas derivadas criadas para analise das vendas."""
-df_vendas = criar_colunas_derivadas(df_limpo)
+    print(f"Dataset gerado com {len(df_bruto)} registros.")
+    print(df_bruto.head())
+    inspecionar_dados(df_bruto)
 
-print("\n=== DATASET COM COLUNAS DERIVADAS ===")
-print(df_vendas.head())
-print(df_vendas[
-    [
-        "receita_total",
-        "mes",
-        "mes_nome",
-        "trimestre",
-        "ano",
-        "faixa_receita_item"
-    ]
-].head())
-print(f"\nColunas disponíveis: {list(df_vendas.columns)}")
+    # 2. Inspeção inicial
+    inspecionar_dados(df_bruto)
 
-metricas = calcular_metricas(df_vendas)
-exibir_metricas(metricas)
+    # 3. Limpeza dos dados
+    df_limpo, relatorio = tratar_dados(df_bruto)
 
-clientes_segmentados = segmentar_clientes(df_vendas)
-exibir_segmentacao(clientes_segmentados)
+    print("\n=== DATASET LIMPO ===")
+    print(df_limpo.head())
+    print(f"\nDimensões finais: {df_limpo.shape}")
+    print(f"\nTipos de dados:\n{df_limpo.dtypes}")
 
-gerar_graficos(df_vendas)
+    # 4. Criação das colunas derivadas
+    df_vendas = criar_colunas_derivadas(df_limpo)
+
+    print("\n=== DATASET COM COLUNAS DERIVADAS ===")
+    print(df_vendas.head())
+
+    print(df_vendas[
+        [
+            "receita_total",
+            "mes",
+            "mes_nome",
+            "trimestre",
+            "ano",
+            "faixa_receita_item"
+        ]
+    ].head())
+
+    print(f"\nColunas disponíveis: {list(df_vendas.columns)}")
+
+    # 5. Cálculo e exibição das métricas
+    metricas = calcular_metricas(df_vendas)
+    exibir_metricas(metricas)
+
+    # 6. Segmentação e exibição dos clientes
+    clientes_segmentados = segmentar_clientes(df_vendas)
+    exibir_segmentacao(clientes_segmentados)
+
+    # 7. Geração dos gráficos
+    gerar_graficos(df_vendas)
+
+    return df_vendas, metricas, clientes_segmentados
+
+if __name__ == "__main__":
+    executar_analise()
